@@ -92,6 +92,26 @@ class Bobr
         }
     }
 
+    static void SearchByName(string[] names, double[] costs)
+    {
+        Console.Write("\nВведите название для поиска: ");
+        string searchTerm = Console.ReadLine().ToLower();
+
+        bool found = false;
+        for (int i = 0; i < names.Length; i++)
+        {
+            if (names[i].ToLower().Contains(searchTerm))
+            {
+                Console.WriteLine($"{names[i]}; {costs[i]:F2} руб.");
+                found = true;
+            }
+        }
+
+        if (!found)
+        {
+            Console.WriteLine("Операции не найдены.");
+        }
+    }
     static void Main(string[] args)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
