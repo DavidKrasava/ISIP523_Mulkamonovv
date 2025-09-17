@@ -31,6 +31,27 @@ class Bobr
         Console.WriteLine($"Минимальная сумма: {min:F2} руб.");
         Console.WriteLine($"Максимальная сумма: {max:F2} руб.");
     }
+
+    static void BubbleSort(string[] names, double[] costs)
+    {
+        for (int i = 0; i < costs.Length - 1; i++)
+        {
+            for (int j = 0; j < costs.Length - i - 1; j++)
+            {
+                if (costs[j] > costs[j + 1])
+                {
+                    double tempCost = costs[j];
+                    costs[j] = costs[j + 1];
+                    costs[j + 1] = tempCost;
+
+                    string tempName = names[j];
+                    names[j] = names[j + 1];
+                    names[j + 1] = tempName;
+                }
+            }
+        }
+    }
+
     static void Main(string[] args)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
