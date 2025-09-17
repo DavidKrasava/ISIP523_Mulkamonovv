@@ -2,6 +2,14 @@
 using System.Globalization;
 class Bobr
 {
+    static void OutputData(string[] names, double[] costs)
+    {
+        Console.WriteLine("\nВсе операции:");
+        for (int i = 0; i < names.Length; i++)
+        {
+            Console.WriteLine($"{names[i]}; {costs[i]:F2} руб.");
+        }
+    }
     static void Main(string[] args)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
