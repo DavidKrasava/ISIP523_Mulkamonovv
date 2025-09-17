@@ -52,6 +52,46 @@ class Bobr
         }
     }
 
+    static void ConvertCurrency(string[] names, double[] costs)
+    {
+        Console.WriteLine("\nДоступные валюты:");
+        Console.WriteLine("1. Доллар (USD)");
+        Console.WriteLine("2. Евро (EUR)");
+        Console.WriteLine("3. Произвольный курс");
+
+        Console.Write("Выберите валюту: ");
+        string currencyChoice = Console.ReadLine();
+        double rate;
+
+        switch (currencyChoice)
+        {
+            case "1":
+                rate = 0.011; 
+                break;
+            case "2":
+                rate = 0.010; 
+                break;
+            case "3":
+                Console.Write("Введите курс конвертации (рублей за единицу валюты): ");
+                while (!double.TryParse(Console.ReadLine(), NumberStyles.Any, CultureInfo.InvariantCulture, out rate) || rate <= 0)
+                {
+                    Console.Write("Ошибка ввода. Введите положительное число: ");
+                }
+                break;
+            default:
+                Console.WriteLine("Неверный выбор.");
+                return;
+        }
+
+        Console.WriteLine("\nКонвертированные данные:");
+        for (int i = 0; i < costs.Length; i++)
+        {
+            double convertedValue = costs[i] * rate;
+            string currencySymbol = currencyChoice == "1" ? "USD" : currencyChoice == "2" ? "EUR" : "ед.";
+            Console.WriteLine($"{names[i]}; {convertedValue:F2} {currencySymbol}");
+        }
+    }
+
     static void Main(string[] args)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
