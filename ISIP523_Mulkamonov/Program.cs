@@ -10,6 +10,27 @@ class Bobr
             Console.WriteLine($"{names[i]}; {costs[i]:F2} руб.");
         }
     }
+
+    static void ShowStatistics(double[] costs)
+    {
+        double sum = 0;
+        double min = costs[0];
+        double max = costs[0];
+
+        for (int i = 0; i < costs.Length; i++)
+        {
+            sum += costs[i];
+            if (costs[i] < min) min = costs[i];
+            if (costs[i] > max) max = costs[i];
+        }
+
+        double average = sum / costs.Length;
+        Console.WriteLine($"\nСтатистика:");
+        Console.WriteLine($"Сумма: {sum:F2} руб.");
+        Console.WriteLine($"Среднее: {average:F2} руб.");
+        Console.WriteLine($"Минимальная сумма: {min:F2} руб.");
+        Console.WriteLine($"Максимальная сумма: {max:F2} руб.");
+    }
     static void Main(string[] args)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
